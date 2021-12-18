@@ -1,22 +1,21 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <ImageEditor></ImageEditor>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
+import ImageEditor from "./components/ImageEditor.vue";
 
 export default {
   name: "App",
   components: {
-    Header,
+    ImageEditor,
   },
 };
 </script>
-
-<style>
+<style lang="less" scoped>
 #app {
-  max-width: 375px;
+  background-color: #000;
 }
 </style>
