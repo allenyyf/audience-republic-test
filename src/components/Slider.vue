@@ -4,14 +4,15 @@
       {{ category }}
     </div>
     <input
+      :disabled="disabled"
       type="range"
       class="slider"
       :style="sliderStyle"
       @input="changeFire"
       v-model="sliderValue"
-      min="0"
-      max="100"
-      step="1"
+      :min="min"
+      :max="max"
+      :step="step"
     />
     <div class="describe-bar">{{ describe }}</div>
   </div>
@@ -20,6 +21,18 @@
 export default {
   name: "slider",
   props: {
+    max: {
+      type: Number,
+      default: 100,
+    },
+    min: {
+      type: Number,
+      default: -100,
+    },
+    step: {
+      type: Number,
+      default: 1,
+    },
     category: {
       type: String,
       validator: (value) => {
@@ -33,15 +46,20 @@ export default {
     describe: {
       type: String,
     },
+    disabled: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
-      sliderValue: 50,
+      sliderValue: 0,
     };
   },
   computed: {
     sliderStyle() {
-      let rate = this.sliderValue,
+      let rate =
+          ((parseInt(this.sliderValue) + this.max) / (this.max * 2)) * 100,
         rgbColorArray = this.hexToRgb(this.themeColor),
         lightColor = `rgba(${rgbColorArray[0]},${rgbColorArray[1]},${rgbColorArray[2]},0.25)`;
       return {
@@ -59,7 +77,7 @@ export default {
     changeFire() {
       this.$emit("sliderChange", {
         category: this.category,
-        val: this.sliderValue,
+        val: parseInt(this.sliderValue),
       });
     },
 
@@ -77,7 +95,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@describe-text-color: #42506b;
 .slider-container {
   text-align: center;
   background-color: @white;
@@ -114,6 +131,7 @@ export default {
   border: 3px solid @white;
   box-sizing: content-box;
   margin-top: -7.5px;
+  cursor: pointer;
 }
 
 .track-style {
