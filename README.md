@@ -1,12 +1,12 @@
 # The projcet is build by Vue-cli, Vue 2, LESS
-# I have divied the compoents into Slider, Header, Uploader
+## I have divied the compoents into Slider, Header, Uploader
 
-# online test link https://master.d3336kun4wq5j8.amplifyapp.com/
+## online test link https://master.d3336kun4wq5j8.amplifyapp.com/
 
-# If need to run the project in the local server.
+## If need to run the project in the local server.
 
-## 1. Please run yarn install first.
-## 2. And then run yarn serve to start the project.
+### 1. Please run yarn install first.
+### 2. And then run yarn serve to start the project.
 
 
 ## Project setup
