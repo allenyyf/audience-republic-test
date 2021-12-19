@@ -16,6 +16,7 @@ export default {
 </script>
 <style lang="less" scoped>
 #app {
+  height: 100vh;
   background-color: #000;
 }
 </style>
